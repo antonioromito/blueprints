@@ -145,7 +145,7 @@ action:
       target:
         entity_id: !input 'air_conditioner'
       data:
-        fan_mode: low
+        fan_mode: "{{ 'low' if now().hour >= 21 or now().hour < 9 else 'auto' }}"
 
   - conditions:
     - condition: or
